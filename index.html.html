@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Journée d'accueil — Stagiaire de seconde · Fidélia Assistance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream:         #F6F1E8;
+  --cream-dark:    #EDE5D6;
+  --dark:          #1A1610;
+  --terra:         #C4522E;
+  --terra-light:   #E8765A;
+  --gold:          #B8892E;
+  --gold-light:    #E8C46A;
+  --blue:          #2B4F78;
+  --green:         #4A7C59;
+  --muted:         #6B6058;
+  --white:         #FFFFFF;
+}
+
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  background: var(--dark);
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── DECK & SLIDES ─────────────────────────────── */
+.deck { width: 100%; height: 100vh; position: relative; overflow: hidden; }
+
+.slide {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  padding: 64px 80px;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.65s cubic-bezier(.4,0,.2,1);
+  background: var(--cream);
+  will-change: opacity;
+}
+.slide.active { opacity: 1; pointer-events: all; }
+.slide.active .anim { animation: riseIn 0.55s ease both; }
+.slide.active .anim:nth-child(1) { animation-delay: 0.05s; }
+.slide.active .anim:nth-child(2) { animation-delay: 0.15s; }
+.slide.active .anim:nth-child(3) { animation-delay: 0.25s; }
+.slide.active .anim:nth-child(4) { animation-delay: 0.35s; }
+
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── GLOBAL TYPE ───────────────────────────────── */
+.eyebrow {
+  font-size: 11px; letter-spacing: .22em;
+  text-transform: uppercase; font-weight: 400;
+  color: var(--terra); margin-bottom: 14px;
+}
+.display {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-weight: 300; line-height: 1.05; color: var(--dark);
+}
+.display em { font-style: italic; color: var(--terra); }
+.slide-header { text-align: center; margin-bottom: 48px; }
+.slide-header .display { font-size: clamp(36px,4.5vw,58px); }
+
+/* ─── SLIDE 1 · COVER ───────────────────────────── */
+#s0 {
+  background: var(--dark);
+  overflow: hidden;
+}
+.orb {
+  position: absolute; border-radius: 50%;
+  pointer-events: none;
+}
+.orb-ring {
+  border: 1px solid rgba(196,82,46,.25);
+  background: transparent;
+}
+.orb-fill { background: var(--terra); }
+
+.cover-body { position: relative; z-index: 2; max-width: 820px; width: 100%; }
+.cover-label {
+  font-size: 11px; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 28px; font-weight: 400;
+}
+.cover-h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(58px,9vw,108px);
+  font-weight: 300; color: var(--cream);
+  line-height: .95; margin-bottom: 20px;
+}
+.cover-h1 em { font-style: italic; color: var(--terra-light); }
+.cover-sub {
+  font-size: 16px; font-weight: 300; letter-spacing: .05em;
+  color: rgba(246,241,232,.5); margin-bottom: 52px;
+}
+.cover-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid rgba(246,241,232,.18);
+  padding: 10px 22px; border-radius: 100px;
+  font-size: 13px; color: rgba(246,241,232,.5);
+  letter-spacing: .06em;
+}
+.pill-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--terra-light); flex-shrink: 0;
+}
+.cover-footer {
+  position: absolute; bottom: 40px; left: 80px; right: 80px;
+  display: flex; justify-content: space-between; align-items: flex-end;
+  z-index: 2;
+}
+.cover-footer-text {
+  font-size: 11px; letter-spacing: .15em;
+  text-transform: uppercase; color: rgba(246,241,232,.22);
+}
+
+/* ─── SLIDE 2 · TEAM ────────────────────────────── */
+.team-grid {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  justify-content: center; max-width: 860px;
+}
+.team-card {
+  background: var(--white);
+  border: 0.5px solid rgba(26,22,16,.08);
+  border-radius: 20px;
+  padding: 24px 20px; text-align: center;
+  flex: 1; min-width: 140px; max-width: 175px;
+  transition: transform .25s, box-shadow .25s;
+}
+.team-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(26,22,16,.08); }
+.avatar {
+  width: 52px; height: 52px; border-radius: 50%;
+  margin: 0 auto 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; font-weight: 600; color: var(--white);
+}
+.av-1 { background: var(--terra); }
+.av-2 { background: linear-gradient(135deg,#C4522E,#E8765A); }
+.av-3 { background: var(--blue); }
+.av-4 { background: var(--dark); }
+.av-5 { background: var(--green); }
+.team-role { font-size: 13px; font-weight: 500; color: var(--dark); margin-bottom: 5px; }
+.team-sub  { font-size: 11px; color: var(--muted); letter-spacing: .04em; line-height: 1.4; }
+
+/* ─── SLIDE 3 · PILLARS (dark) ──────────────────── */
+#s2 { background: var(--dark); }
+#s2 .display { color: var(--cream); }
+#s2 .display em { color: var(--terra-light); }
+#s2 .eyebrow { color: var(--gold); }
+
+.pillars { display: flex; gap: 28px; max-width: 900px; margin-top: 4px; }
+.pillar {
+  flex: 1; padding: 36px 28px;
+  border-top: 2px solid; position: relative;
+}
+.p1 { border-color: var(--terra); }
+.p2 { border-color: var(--gold); }
+.p3 { border-color: var(--green); }
+.pillar-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 80px; font-weight: 300; line-height: 1;
+  opacity: .12; color: var(--cream); margin-bottom: 8px;
+}
+.pillar-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px; font-weight: 500; margin-bottom: 14px;
+}
+.p1 .pillar-title { color: var(--terra-light); }
+.p2 .pillar-title { color: var(--gold-light); }
+.p3 .pillar-title { color: #7ABF8E; }
+.pillar-desc {
+  font-size: 14px; line-height: 1.75;
+  color: rgba(246,241,232,.5); font-weight: 300;
+}
+
+/* ─── SLIDE 4 · OVERVIEW ────────────────────────── */
+.tl { display: flex; max-width: 940px; width: 100%; gap: 0; margin-top: 8px; }
+.tl-block {
+  flex: 1; padding: 32px 28px; position: relative;
+}
+.tl-block + .tl-block::before {
+  content: '';
+  position: absolute; left: 0; top: 15%; bottom: 15%;
+  width: 0.5px; background: rgba(26,22,16,.12);
+}
+.tl-time {
+  font-size: 10px; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--muted);
+  margin-bottom: 8px;
+}
+.tl-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px; font-weight: 500; margin-bottom: 18px;
+}
+.tl-m .tl-label { color: var(--terra); }
+.tl-a .tl-label { color: var(--blue); }
+.tl-s .tl-label { color: var(--green); }
+.tl-items { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.tl-items li {
+  font-size: 13px; color: var(--dark); font-weight: 400;
+  padding-left: 16px; position: relative; line-height: 1.45;
+}
+.tl-items li::before {
+  content: ''; position: absolute;
+  left: 0; top: 6px;
+  width: 5px; height: 5px; border-radius: 50%;
+}
+.tl-m li::before { background: var(--terra); }
+.tl-a li::before { background: var(--blue); }
+.tl-s li::before { background: var(--green); }
+
+/* ─── SLIDE 5 · MATIN ───────────────────────────── */
+.activities { display: flex; flex-direction: column; gap: 10px; max-width: 820px; width: 100%; }
+.act {
+  display: flex; align-items: flex-start; gap: 18px;
+  background: var(--white);
+  border-radius: 14px; padding: 14px 18px;
+  border-left: 3px solid; transition: transform .2s;
+}
+.act:hover { transform: translateX(4px); }
+.act-t { border-color: var(--terra); }
+.act-g { border-color: var(--gold); }
+.act-b { border-color: var(--blue); }
+.act-gr { border-color: var(--green); }
+.act-time {
+  font-size: 11px; color: var(--muted);
+  min-width: 52px; padding-top: 2px;
+  letter-spacing: .04em; flex-shrink: 0;
+}
+.act-name { font-size: 13px; font-weight: 500; color: var(--dark); margin-bottom: 2px; }
+.act-desc { font-size: 12px; color: var(--muted); line-height: 1.55; }
+.badges { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+.badge {
+  display: inline-block; font-size: 10px;
+  padding: 2px 9px; border-radius: 100px;
+  font-weight: 500; letter-spacing: .04em;
+}
+.bj { background: #FEF3E2; color: #92580A; }
+.bp { background: #EEF4FB; color: #1E4B7A; }
+.bg { background: #EDF7F1; color: #285E3F; }
+
+/* ─── SLIDE 6 · APREM + CLOTURE ─────────────────── */
+.aprem-wrap { display: flex; gap: 24px; max-width: 940px; width: 100%; }
+.aprem-col  { flex: 1; display: flex; flex-direction: column; gap: 12px; }
+.aprem-col-sm { max-width: 280px; flex-shrink: 0; }
+.sec-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 500; margin-bottom: 4px;
+}
+.sl-blue  { color: var(--blue); }
+.sl-green { color: var(--green); }
+.aprem-card {
+  background: var(--white);
+  border: 0.5px solid rgba(26,22,16,.07);
+  border-radius: 14px; padding: 16px 18px;
+  transition: transform .2s;
+}
+.aprem-card:hover { transform: translateY(-2px); }
+.aprem-card.accent-green { border-top: 3px solid var(--green); }
+.aprem-card.accent-gold  { border-top: 3px solid var(--gold); }
+.ac-time { font-size: 10px; color: var(--muted); margin-bottom: 4px; letter-spacing: .06em; }
+.ac-name { font-size: 13px; font-weight: 500; color: var(--dark); margin-bottom: 4px; }
+.ac-desc { font-size: 12px; color: var(--muted); line-height: 1.55; }
+
+/* ─── SLIDE 7 · CLOSING ─────────────────────────── */
+#s6 { background: var(--dark); overflow: hidden; }
+.close-body {
+  text-align: center; max-width: 720px;
+  position: relative; z-index: 2;
+}
+.close-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px,4.2vw,56px);
+  font-weight: 300; font-style: italic;
+  color: var(--cream); line-height: 1.3;
+  margin-bottom: 28px;
+}
+.close-quote em {
+  font-style: normal;
+  color: var(--terra-light);
+}
+.close-sub {
+  font-size: 11px; letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(246,241,232,.35); margin-bottom: 40px;
+}
+.close-tags { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.close-tag {
+  border: 0.5px solid rgba(246,241,232,.18);
+  padding: 8px 20px; border-radius: 100px;
+  font-size: 13px; color: rgba(246,241,232,.55);
+  letter-spacing: .04em;
+}
+
+/* ─── NAVIGATION ─────────────────────────────────── */
+#nav-dots {
+  position: fixed; bottom: 30px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; gap: 8px; z-index: 200;
+}
+.dot {
+  width: 6px; height: 6px; border-radius: 3px;
+  background: rgba(246,241,232,.2);
+  cursor: pointer; transition: all .35s ease;
+}
+.dot.on { width: 22px; background: var(--terra); }
+
+.arrow-wrap {
+  position: fixed; top: 50%; transform: translateY(-50%);
+  width: 100%; display: flex; justify-content: space-between;
+  padding: 0 20px; pointer-events: none; z-index: 200;
+}
+.arrow {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(246,241,232,.07);
+  border: 0.5px solid rgba(246,241,232,.15);
+  color: rgba(246,241,232,.45);
+  cursor: pointer; pointer-events: all;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; transition: all .2s;
+  backdrop-filter: blur(6px);
+}
+.arrow:hover {
+  background: rgba(246,241,232,.16);
+  color: rgba(246,241,232,.9);
+  transform: scale(1.08);
+}
+
+#counter {
+  position: fixed; top: 28px; right: 40px;
+  font-size: 11px; letter-spacing: .14em;
+  color: rgba(246,241,232,.22); z-index: 200;
+}
+
+/* keyboard hint */
+.hint {
+  position: fixed; bottom: 64px; left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px; letter-spacing: .14em;
+  color: rgba(246,241,232,.18); z-index: 200;
+  pointer-events: none;
+  text-transform: uppercase;
+}
+</style>
+</head>
+<body>
+
+<div class="deck">
+
+  <!-- ══ SLIDE 1 · COVER ══════════════════════════ -->
+  <div class="slide" id="s0">
+    <!-- decorative orbs -->
+    <div class="orb orb-ring" style="width:640px;height:640px;right:-180px;top:-180px;"></div>
+    <div class="orb orb-ring" style="width:420px;height:420px;right:-60px;top:-60px;border-color:rgba(184,137,46,.2);"></div>
+    <div class="orb orb-fill" style="width:200px;height:200px;right:110px;top:110px;opacity:.1;"></div>
+    <div class="orb orb-ring" style="width:180px;height:180px;left:60px;bottom:80px;border-color:rgba(184,137,46,.12);"></div>
+    <div style="position:absolute;width:80px;height:0.5px;background:rgba(232,196,106,.3);bottom:32%;left:14%;transform:rotate(-28deg);"></div>
+    <div style="position:absolute;width:6px;height:6px;border-radius:50%;background:var(--gold);bottom:35%;left:24%;"></div>
+    <div style="position:absolute;width:4px;height:4px;border-radius:50%;background:rgba(232,118,90,.4);top:30%;left:38%;"></div>
+
+    <div class="cover-body anim">
+      <div class="cover-label">Fidélia Assistance · Équipe Marketing</div>
+      <div class="cover-h1">Journée<br><em>d'accueil</em></div>
+      <div class="cover-sub">Stagiaire de seconde · Programme d'intégration</div>
+      <div class="cover-pill">
+        <span class="pill-dot"></span>
+        Une journée enrichissante, ludique &amp; bienveillante
+      </div>
+    </div>
+    <div class="cover-footer">
+      <div class="cover-footer-text">Groupe Covéa</div>
+      <div class="cover-footer-text">5 collaborateurs · 1 journée</div>
+    </div>
+  </div>
+
+  <!-- ══ SLIDE 2 · TEAM ═══════════════════════════ -->
+  <div class="slide" id="s1">
+    <div class="slide-header anim">
+      <div class="eyebrow">Notre équipe</div>
+      <div class="display" style="font-size:clamp(36px,4.5vw,58px);">Cinq personnes pour<br><em>vous accueillir</em></div>
+    </div>
+    <div class="team-grid anim">
+      <div class="team-card">
+        <div class="avatar av-1">A</div>
+        <div class="team-role">Alternante marketing</div>
+        <div class="team-sub">Études client &amp; CX</div>
+      </div>
+      <div class="team-card">
+        <div class="avatar av-2">A</div>
+        <div class="team-role">Alternant·e marketing</div>
+        <div class="team-sub">Marketing opérationnel</div>
+      </div>
+      <div class="team-card">
+        <div class="avatar av-3">C</div>
+        <div class="team-role">Chargé d'études</div>
+        <div class="team-sub">Projet RCC</div>
+      </div>
+      <div class="team-card">
+        <div class="avatar av-4">M</div>
+        <div class="team-role">Manager</div>
+        <div class="team-sub">Business Analytics</div>
+      </div>
+      <div class="team-card">
+        <div class="avatar av-5">B</div>
+        <div class="team-role">Business Analyst</div>
+        <div class="team-sub">Data &amp; insights</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SLIDE 3 · PILLARS ════════════════════════ -->
+  <div class="slide" id="s2">
+    <div class="slide-header anim">
+      <div class="eyebrow" style="color:var(--gold);">Notre intention</div>
+      <div class="display" style="font-size:clamp(36px,4.5vw,58px);color:var(--cream);">Trois piliers pour<br><em>une journée mémorable</em></div>
+    </div>
+    <div class="pillars anim">
+      <div class="pillar p1">
+        <div class="pillar-num">01</div>
+        <div class="pillar-title">Enrichissante</div>
+        <div class="pillar-desc">Découvrir les métiers du marketing, de la data et de l'assurance à travers des présentations concrètes et accessibles.</div>
+      </div>
+      <div class="pillar p2">
+        <div class="pillar-num">02</div>
+        <div class="pillar-title">Ludique</div>
+        <div class="pillar-desc">Des jeux, des défis créatifs et des activités interactives pour apprendre en s'amusant — sans pression.</div>
+      </div>
+      <div class="pillar p3">
+        <div class="pillar-num">03</div>
+        <div class="pillar-title">Bienveillante</div>
+        <div class="pillar-desc">Une atmosphère chaleureuse où chaque question est la bienvenue, et où l'erreur fait partie du jeu.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SLIDE 4 · OVERVIEW ═══════════════════════ -->
+  <div class="slide" id="s3">
+    <div class="slide-header anim">
+      <div class="eyebrow">Organisation de la journée</div>
+      <div class="display" style="font-size:clamp(36px,4.5vw,58px);">Le programme<br><em>en un coup d'œil</em></div>
+    </div>
+    <div class="tl anim">
+      <div class="tl-block tl-m">
+        <div class="tl-time">9h00 — 12h30</div>
+        <div class="tl-label">Matin</div>
+        <ul class="tl-items">
+          <li>Accueil &amp; brise-glace "Qui est qui ?"</li>
+          <li>Présentation équipe + quiz Covéa</li>
+          <li>Projet RCC par le chargé d'études</li>
+          <li>Challenge marketing minute</li>
+          <li>Présentation manager + cadeau livret</li>
+        </ul>
+      </div>
+      <div class="tl-block tl-a">
+        <div class="tl-time">12h30 — 17h00</div>
+        <div class="tl-label">Après-midi</div>
+        <ul class="tl-items">
+          <li>Déjeuner en équipe</li>
+          <li>Immersion sur une mission réelle</li>
+          <li>Atelier "À ta façon" — création libre</li>
+        </ul>
+      </div>
+      <div class="tl-block tl-s">
+        <div class="tl-time">17h00 — 17h30</div>
+        <div class="tl-label">Clôture</div>
+        <ul class="tl-items">
+          <li>Le mot de la fin (cercle)</li>
+          <li>Goûter partagé</li>
+          <li>Photo souvenir</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SLIDE 5 · MATIN ══════════════════════════ -->
+  <div class="slide" id="s4">
+    <div class="slide-header anim" style="margin-bottom:28px;">
+      <div class="eyebrow">9h00 — 12h30</div>
+      <div class="display" style="font-size:clamp(32px,4vw,52px);">Le <em>matin</em> en détail</div>
+    </div>
+    <div class="activities anim">
+      <div class="act act-t">
+        <div class="act-time">9h00</div>
+        <div>
+          <div class="act-name">Accueil &amp; "Qui est qui ?"</div>
+          <div class="act-desc">Chaque membre se présente en 3 mots. Le stagiaire devine le métier de chacun parmi 3 propositions.</div>
+          <div class="badges"><span class="badge bj">Jeu brise-glace</span></div>
+        </div>
+      </div>
+      <div class="act act-t">
+        <div class="act-time">9h30</div>
+        <div>
+          <div class="act-name">Présentation de l'équipe — les alternants</div>
+          <div class="act-desc">Pitch visuel + quiz vrai/faux sur Fidélia et le groupe Covéa.</div>
+          <div class="badges"><span class="badge bp">Présentation</span><span class="badge bj">Quiz interactif</span></div>
+        </div>
+      </div>
+      <div class="act act-b">
+        <div class="act-time">10h40</div>
+        <div>
+          <div class="act-name">Projet RCC — chargé d'études</div>
+          <div class="act-desc">Explication accessible : enjeux, données, impact client. Quelques visuels, sans jargon.</div>
+          <div class="badges"><span class="badge bp">Présentation</span></div>
+        </div>
+      </div>
+      <div class="act act-t">
+        <div class="act-time">11h15</div>
+        <div>
+          <div class="act-name">Challenge "marketing minute"</div>
+          <div class="act-desc">Brief fictif, 5 min de préparation, pitch devant l'équipe-jury bienveillante.</div>
+          <div class="badges"><span class="badge bj">Mini-défi créatif</span></div>
+        </div>
+      </div>
+      <div class="act act-b">
+        <div class="act-time">11h45</div>
+        <div>
+          <div class="act-name">Présentation manager — événement interne + livret</div>
+          <div class="act-desc">La manager présente un événement interne et offre le livret en cadeau de bienvenue.</div>
+          <div class="badges"><span class="badge bp">Présentation</span><span class="badge bg">Cadeau</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SLIDE 6 · APREM & CLÔTURE ════════════════ -->
+  <div class="slide" id="s5">
+    <div class="slide-header anim" style="margin-bottom:28px;">
+      <div class="eyebrow">12h30 — 17h30</div>
+      <div class="display" style="font-size:clamp(32px,4vw,52px);">L'<em>après-midi</em> &amp; la clôture</div>
+    </div>
+    <div class="aprem-wrap anim">
+      <div class="aprem-col">
+        <div class="sec-label sl-blue">Après-midi</div>
+        <div class="aprem-card">
+          <div class="ac-time">12h30</div>
+          <div class="ac-name">Déjeuner en équipe</div>
+          <div class="ac-desc">Convivialité informelle autour d'un repas partagé — on parle de tout sauf du boulot.</div>
+        </div>
+        <div class="aprem-card">
+          <div class="ac-time">13h30</div>
+          <div class="ac-name">Immersion sur une mission réelle</div>
+          <div class="ac-desc">Observation active : tableau de bord, rapport, verbatims. Le stagiaire voit le travail de l'intérieur.</div>
+          <div class="badges" style="margin-top:8px;"><span class="badge bp">Observation</span></div>
+        </div>
+        <div class="aprem-card">
+          <div class="ac-time">15h30</div>
+          <div class="ac-name">Atelier "À ta façon"</div>
+          <div class="ac-desc">20 min de création libre : post imaginaire, slogan, idées… L'équipe commente avec bienveillance.</div>
+          <div class="badges" style="margin-top:8px;"><span class="badge bj">Créatif libre</span></div>
+        </div>
+      </div>
+      <div class="aprem-col aprem-col-sm">
+        <div class="sec-label sl-green">Clôture conviviale</div>
+        <div class="aprem-card accent-green">
+          <div class="ac-time">17h00</div>
+          <div class="ac-name">Le mot de la fin</div>
+          <div class="ac-desc">Chaque membre dit ce qu'il retient. Le stagiaire répond : <em style="color:var(--green);font-style:italic;">"Qu'est-ce qui t'a le plus surpris ?"</em></div>
+        </div>
+        <div class="aprem-card accent-gold">
+          <div class="ac-time">17h15</div>
+          <div class="ac-name">Goûter &amp; photo souvenir</div>
+          <div class="ac-desc">Un moment chaleureux pour clore sur une note mémorable et humaine.</div>
+          <div class="badges" style="margin-top:8px;"><span class="badge bg">Souvenir</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SLIDE 7 · CLOSING ════════════════════════ -->
+  <div class="slide" id="s6">
+    <div class="orb orb-ring" style="width:580px;height:580px;left:-180px;bottom:-160px;border-color:rgba(196,82,46,.2);"></div>
+    <div class="orb orb-ring" style="width:380px;height:380px;left:-80px;bottom:-60px;border-color:rgba(184,137,46,.15);"></div>
+    <div class="orb orb-fill" style="width:180px;height:180px;left:80px;bottom:80px;opacity:.08;"></div>
+    <div style="position:absolute;width:80px;height:0.5px;background:rgba(232,196,106,.3);top:28%;right:14%;transform:rotate(28deg);"></div>
+    <div style="position:absolute;width:6px;height:6px;border-radius:50%;background:var(--gold);top:32%;right:24%;"></div>
+
+    <div class="close-body anim">
+      <div class="close-quote">L'objectif&nbsp;? Qu'il reparte en disant<br><em>"je veux faire ça plus tard."</em></div>
+      <div class="close-sub">Une journée construite avec soin · Fidélia Assistance</div>
+      <div class="close-tags">
+        <span class="close-tag">Enrichissante</span>
+        <span class="close-tag">Ludique</span>
+        <span class="close-tag">Bienveillante</span>
+        <span class="close-tag">Mémorable</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /deck -->
+
+<!-- ── NAVIGATION ────────────────────────────────── -->
+<div id="nav-dots"></div>
+
+<div class="arrow-wrap">
+  <button class="arrow" id="btn-prev" aria-label="Diapositive précédente">&#8592;</button>
+  <button class="arrow" id="btn-next" aria-label="Diapositive suivante">&#8594;</button>
+</div>
+
+<div id="counter"></div>
+<div class="hint">← → pour naviguer</div>
+
+<script>
+  const slides  = Array.from(document.querySelectorAll('.slide'));
+  const dotsEl  = document.getElementById('nav-dots');
+  const counter = document.getElementById('counter');
+  const total   = slides.length;
+  let cur = 0;
+
+  // Build dots
+  slides.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' on' : '');
+    d.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(d);
+  });
+
+  function goTo(n) {
+    slides[cur].classList.remove('active');
+    dotsEl.children[cur].classList.remove('on');
+    cur = ((n % total) + total) % total;
+    slides[cur].classList.add('active');
+    dotsEl.children[cur].classList.add('on');
+    counter.textContent = (cur + 1) + ' / ' + total;
+  }
+
+  goTo(0);
+
+  document.getElementById('btn-prev').addEventListener('click', () => goTo(cur - 1));
+  document.getElementById('btn-next').addEventListener('click', () => goTo(cur + 1));
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); goTo(cur + 1); }
+    if (e.key === 'ArrowLeft')                   { e.preventDefault(); goTo(cur - 1); }
+  });
+
+  // Touch / swipe
+  let sx = 0;
+  document.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener('touchend',   e => {
+    const dx = sx - e.changedTouches[0].clientX;
+    if (Math.abs(dx) > 48) goTo(cur + (dx > 0 ? 1 : -1));
+  });
+</script>
+</body>
+</html>
